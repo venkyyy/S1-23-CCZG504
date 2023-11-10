@@ -2,20 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const amqp = require('amqplib');
+const config = require('./config');
 
 const app = express();
-const PORT = 3000;
-const RABBITMQ_URL = 'amqp://localhost';
+const PORT = config.port;
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/productCatalog', {
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
+mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const productSchema = new mongoose.Schema({
   name: String,
@@ -25,7 +19,7 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('Product', productSchema);
 
 async function publishProductCreatedEvent(product) {
-  const connection = await amqp.connect(RABBITMQ_URL);
+  const connection = await amqp.connect(config.rabbitmqUrl);
   const channel = await connection.createChannel();
   const exchange = 'product.created';
 

@@ -151,7 +151,7 @@ Use the provided endpoints (documented below) to interact with each microservice
 ### Development
 
 - Each microservice is developed independently.
-- Follow the development guidelines in each microservice directory.
+
 
 
 

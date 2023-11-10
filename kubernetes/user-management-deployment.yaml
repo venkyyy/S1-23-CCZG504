@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: user-management
-        image: dockerhub-username/user-management:latest
+        image: venkatkodari/user-management:latest
         ports:
         - containerPort: 3001
 ---

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: product-catalog
-        image: dockerhub-username/product-catalog:latest
+        image: venkatkodari/product-catalog:latest
         ports:
         - containerPort: 3000
 ---

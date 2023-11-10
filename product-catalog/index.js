@@ -1,3 +1,5 @@
+// product-catalog.js
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -9,11 +11,12 @@ const PORT = config.port;
 
 app.use(bodyParser.json());
 
-mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${config.mongoUri}/productCatalog`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const productSchema = new mongoose.Schema({
   name: String,
   price: Number,
+  stock: Number,
 });
 
 const Product = mongoose.model('Product', productSchema);
@@ -44,8 +47,8 @@ app.get('/products/:id', async (req, res) => {
 });
 
 app.post('/products', async (req, res) => {
-  const { name, price } = req.body;
-  const newProduct = new Product({ name, price });
+  const { name, price, stock } = req.body;
+  const newProduct = new Product({ name, price, stock });
   await newProduct.save();
 
   await publishProductCreatedEvent(newProduct);

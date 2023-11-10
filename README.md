@@ -43,7 +43,44 @@ Before you begin, ensure you have met the following requirements:
 - Node.js and npm installed
 - Docker installed (for local development)
 - Kubernetes cluster set up (for deployment)
+- Minikube installed (for local development)
 - MongoDB installed and running locally
+
+## Running Minikube
+
+1. Install Minikube by following the instructions in the [official documentation](https://minikube.sigs.k8s.io/docs/start/).
+
+2. Start Minikube:
+
+```bash
+   minikube start
+```
+
+### Minikube options:
+
+1. Check the status of the Minikube cluster:
+
+```bash
+minikube status
+```
+
+2. Access the Kubernetes dashboard:
+
+```bash
+minikube dashboard
+```
+
+3. Get the Minikube cluster IP:
+
+```bash
+minikube ip
+```
+
+4. Stop the Minikube cluster:
+
+```bash
+minikube stop
+```
 
 ## Getting Started
 

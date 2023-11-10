@@ -1,4 +1,4 @@
-# S1-23-CCZG504: Microservices Application
+# S1-23-CCZG504: Microservices Application Product Catalog, User Management, and Order Processing
 
 ## Group Details
 ### Group 6	
@@ -7,7 +7,9 @@
 3. **2022mt03584- Madhavan R**
 4. **2022mt03520- Venkatesh Kodari**
 
-This repository contains a set of microservices designed to work together to form a complete application. The application consists of three microservices:
+This contains a basic example of three microservices: Product Catalog, User Management, and Order Processing. 
+The services communicate via RabbitMQ for event-driven interactions.
+
 
 1. **Product Catalog Microservice**
    - Manages the catalog of products available in the system.

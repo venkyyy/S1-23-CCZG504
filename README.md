@@ -114,12 +114,7 @@ Use the provided endpoints (documented below) to interact with each microservice
 - Each microservice is developed independently.
 - Follow the development guidelines in each microservice directory.
 
-### Contributing
-#### Fork the repository.
-- Create a new branch (git checkout -b feature/new-feature).
-- Commit your changes (git commit -am 'Add new feature').
-- Push to the branch (git push origin feature/new-feature).
-- Create a new Pull Request.
+
 
 
 

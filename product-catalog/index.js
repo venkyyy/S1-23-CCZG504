@@ -9,7 +9,13 @@ const RABBITMQ_URL = 'amqp://localhost';
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/productCatalog', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/productCatalog', {
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 
 const productSchema = new mongoose.Schema({
   name: String,

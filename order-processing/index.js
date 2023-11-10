@@ -7,7 +7,13 @@ const PORT = 3002;
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/orderProcessing', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/orderProcessing', {
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 
 const orderSchema = new mongoose.Schema({
   userId: String,

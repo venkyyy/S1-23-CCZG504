@@ -9,7 +9,13 @@ const RABBITMQ_URL = 'amqp://localhost';
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/userManagement', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/userManagement', {
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 
 const userSchema = new mongoose.Schema({
   username: String,

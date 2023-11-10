@@ -3,9 +3,9 @@
 ## Group Details
 ### Group 6	
 1. **2022mt03574- S S Pavan Kumar Marla**
-2. **2022mt03606-LEELA KUMARI A**
-3. **2022mt03584-MADHAVAN R**
-4. **2022mt03520-VENKATESH KODARI**
+2. **2022mt03606- Leela Kumari A**
+3. **2022mt03584- Madhavan R**
+4. **2022mt03520- Venkatesh Kodari**
 
 This repository contains a set of microservices designed to work together to form a complete application. The application consists of three microservices:
 

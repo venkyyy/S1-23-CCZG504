@@ -47,6 +47,7 @@ Before you begin, ensure you have met the following requirements:
 - Kubernetes cluster set up (for deployment)
 - Minikube installed (for local development)
 - MongoDB installed and running locally
+- Rabbitmq installed and running locally
 
 ## Running Minikube
 
@@ -101,12 +102,18 @@ minikube stop
 ```bash
     docker push your-dockerhub-username/product-catalog:latest
     docker push your-dockerhub-username/user-management:latest
-        docker push your-dockerhub-username/order-processing:latest
+    docker push your-dockerhub-username/order-processing:latest
 ```
 
 ### Kubernetes Deployment
-
-1. Apply the Kubernetes deployment files:
+1. Load the images into minikube docker
+```bash   
+   minikube image load your-dockerhub-username/product-catalog:latest
+   minikube image load your-dockerhub-username/user-management:latest
+   minikube image load your-dockerhub-username/order-processing:latest
+```
+   
+3. Apply the Kubernetes deployment files:
 
 ```bash
     kubectl apply -f product-catalog-deployment.yaml
@@ -114,11 +121,12 @@ minikube stop
     kubectl apply -f order-processing-deployment.yaml
 ```
 
-2. Monitor the deployment:
+4. Monitor the deployment:
 
 ```bash
 kubectl get pods
 kubectl get services
+minikube ip
 ```
 
 ### Usage
@@ -127,6 +135,7 @@ Access the microservices through the exposed services in your Kubernetes cluster
 Use the provided endpoints (documented below) to interact with each microservice.
 
 ### Endpoints
+http:<minikube-ip>:<nodePort>
 
 #### Product Catalog Microservice
 

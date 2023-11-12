@@ -11,15 +11,22 @@ const PORT = config.port;
 
 app.use(bodyParser.json());
 
-mongoose.connect(`${config.mongoUri}/userManagement`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'userManagement' })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 
 const userSchema = new mongoose.Schema({
   username: String,
   email: String,
-  loyaltyPoints: { type: Number, default: 0 }, 
+  loyaltyPoints: { type: Number, default: 0 },
 });
 
 const User = mongoose.model('User', userSchema);
+
 
 async function subscribeToProductCreatedEvents() {
   const connection = await amqp.connect(config.rabbitmqUrl);

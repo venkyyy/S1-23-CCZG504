@@ -47,6 +47,7 @@ Before you begin, ensure you have met the following requirements:
 - Kubernetes cluster set up (for deployment)
 - Minikube installed (for local development)
 - MongoDB installed and running locally
+- Rabbitmq installed and running locally
 
 ## Running Minikube
 
@@ -91,22 +92,28 @@ minikube stop
 1. Build the Docker images for each microservice:
 
 ```bash
-   docker build -t dockerhub-username/product-catalog:latest ./product-catalog
-   docker build -t dockerhub-username/user-management:latest ./user-management
-   docker build -t dockerhub-username/order-processing:latest ./order-processing
+   docker build -t venkatkodari/product-catalog:latest ./product-catalog
+   docker build -t venkatkodarie/user-management:latest ./user-management
+   docker build -t venkatkodari/order-processing:latest ./order-processing
 ```
 
 
 2. Push the Docker images to DockerHub: 
 ```bash
-    docker push your-dockerhub-username/product-catalog:latest
-    docker push your-dockerhub-username/user-management:latest
-        docker push your-dockerhub-username/order-processing:latest
+    docker push venkatkodari/product-catalog:latest
+    docker push venkatkodari/user-management:latest
+    docker push venkatkodari/order-processing:latest
 ```
 
 ### Kubernetes Deployment
-
-1. Apply the Kubernetes deployment files:
+1. Load the images into minikube docker
+```bash   
+   minikube image load your-dockerhub-username/product-catalog:latest
+   minikube image load your-dockerhub-username/user-management:latest
+   minikube image load your-dockerhub-username/order-processing:latest
+```
+   
+3. Apply the Kubernetes deployment files:
 
 ```bash
     kubectl apply -f product-catalog-deployment.yaml
@@ -114,11 +121,13 @@ minikube stop
     kubectl apply -f order-processing-deployment.yaml
 ```
 
-2. Monitor the deployment:
+4. Monitor the deployment:
 
 ```bash
 kubectl get pods
 kubectl get services
+# used for endpoint
+minikube ip
 ```
 
 ### Usage
@@ -127,6 +136,7 @@ Access the microservices through the exposed services in your Kubernetes cluster
 Use the provided endpoints (documented below) to interact with each microservice.
 
 ### Endpoints
+http:<minikube-ip>:<nodePort>
 
 #### Product Catalog Microservice
 
@@ -151,7 +161,7 @@ Use the provided endpoints (documented below) to interact with each microservice
 ### Development
 
 - Each microservice is developed independently.
-- Follow the development guidelines in each microservice directory.
+
 
 
 

@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+PorapiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-management
@@ -15,6 +15,7 @@ spec:
       containers:
       - name: user-management
         image: venkatkodari/user-management:latest
+        imagePullPolicy: Never   #as manually loaded to minikubes docker from dockerhub
         ports:
         - containerPort: 3001
 ---
@@ -29,4 +30,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 3001
-  type: LoadBalancer
+      nodePort: 30080  #portnumber to be used in endpoint
+  type: NodePort   

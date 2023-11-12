@@ -126,6 +126,7 @@ minikube stop
 ```bash
 kubectl get pods
 kubectl get services
+# used for endpoint
 minikube ip
 ```
 

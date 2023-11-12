@@ -92,17 +92,17 @@ minikube stop
 1. Build the Docker images for each microservice:
 
 ```bash
-   docker build -t dockerhub-username/product-catalog:latest ./product-catalog
-   docker build -t dockerhub-username/user-management:latest ./user-management
-   docker build -t dockerhub-username/order-processing:latest ./order-processing
+   docker build -t venkatkodari/product-catalog:latest ./product-catalog
+   docker build -t venkatkodarie/user-management:latest ./user-management
+   docker build -t venkatkodari/order-processing:latest ./order-processing
 ```
 
 
 2. Push the Docker images to DockerHub: 
 ```bash
-    docker push your-dockerhub-username/product-catalog:latest
-    docker push your-dockerhub-username/user-management:latest
-    docker push your-dockerhub-username/order-processing:latest
+    docker push venkatkodari/product-catalog:latest
+    docker push venkatkodari/user-management:latest
+    docker push venkatkodari/order-processing:latest
 ```
 
 ### Kubernetes Deployment
